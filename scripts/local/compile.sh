@@ -5,9 +5,9 @@ if [ -z "${VERSION}" ]; then echo "VERSION is not set. Use ./compile.sh 0.0.0" >
 
 RELEASE_DIR=".tmp/release"
 
-rm -r "${RELEASE_DIR}"
-mkdir "${RELEASE_DIR}"
-touch "${RELEASE_DIR}/checksum.txt"
+# rm -r "${RELEASE_DIR}"
+# mkdir "${RELEASE_DIR}"
+# touch "${RELEASE_DIR}/checksum.txt"
 
 make_release() {
     local arch="$1"
@@ -42,11 +42,11 @@ make_release() {
     cd ../../
 }
 
-make_release 386 linux "rcon-${VERSION}-i386_linux"
-make_release amd64 linux "rcon-${VERSION}-amd64_linux"
-make_release 386 windows "rcon-${VERSION}-win32" .exe
-make_release amd64 windows "rcon-${VERSION}-win64" .exe
-make_release amd64 darwin "rcon-${VERSION}-amd64_darwin"
-make_release arm64 darwin "rcon-${VERSION}-arm64_darwin"
+# make_release 386 linux "rcon-${VERSION}-i386_linux"
+# make_release amd64 linux "rcon-${VERSION}-amd64_linux"
+# make_release 386 windows "rcon-${VERSION}-win32" .exe
+# make_release amd64 windows "rcon-${VERSION}-win64" .exe
+# make_release amd64 darwin "rcon-${VERSION}-amd64_darwin"
+# make_release arm64 darwin "rcon-${VERSION}-arm64_darwin"
 
 env GOARCH="amd64" GOOS="linux" CGO_ENABLED=0 go build -ldflags "-s -w -X main.Version=${VERSION}" -o gorcon ./cmd/gorcon/main.go
